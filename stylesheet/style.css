@@ -1,0 +1,280 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #0b0f1a;
+  color: white;
+}
+
+header {
+  background: #11182b;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #ffd700;
+}
+
+.planet {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.planet img {
+  max-width: 200px;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+/* Planet page links styling */
+.planet h3 a {
+  color: #ffd700;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.6s ease; /* Text fade */
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.planet h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffd700, #ff8800);
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: none;
+}
+
+.planet h3 a:hover::after {
+  animation: slideIn 0.6s forwards;
+}
+
+.planet h3 a:not(:hover)::after {
+  animation: slideOut 0.6s forwards;
+}
+
+.planet h3 a:hover {
+  color: #0b0f1a;
+}
+
+/* Slide in/out keyframes */
+@keyframes slideIn {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: scaleX(1); }
+  to { opacity: 0; transform: scaleX(0); }
+}
+
+button {
+  background-color: #ffd700;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffbf00;
+}
+
+.back-link {
+  display: block;
+  margin-top: 2rem;
+  text-align: center;
+  color: #ffd700;
+}
+
+@media (max-width: 600px) {
+  .planet {
+    flex-direction: column;
+    align-items: center;
+  }
+  .planet img {
+    margin: 0 0 1rem 0;
+  }
+}
+
+/* Dropdown menu styling */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  position: relative;
+  display: inline-block;
+}
+
+nav a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+  color: #ff8800;
+  text-decoration: none;
+}
+
+nav ul.dropdown-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background: #1c2340;
+  min-width: 160px;
+  border-radius: 6px;
+  z-index: 10;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+nav ul.dropdown-content li {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown:hover .dropdown-content li {
+  animation: dropIn 0.4s forwards;
+}
+
+.dropdown:not(:hover) .dropdown-content li {
+  animation: dropOut 0.4s forwards;
+}
+
+/* Staggered animation effect */
+.dropdown:hover .dropdown-content li:nth-child(1),
+.dropdown:not(:hover) .dropdown-content li:nth-child(1) { animation-delay: 0.05s; }
+.dropdown:hover .dropdown-content li:nth-child(2),
+.dropdown:not(:hover) .dropdown-content li:nth-child(2) { animation-delay: 0.1s; }
+.dropdown:hover .dropdown-content li:nth-child(3),
+.dropdown:not(:hover) .dropdown-content li:nth-child(3) { animation-delay: 0.15s; }
+.dropdown:hover .dropdown-content li:nth-child(4),
+.dropdown:not(:hover) .dropdown-content li:nth-child(4) { animation-delay: 0.2s; }
+.dropdown:hover .dropdown-content li:nth-child(5),
+.dropdown:not(:hover) .dropdown-content li:nth-child(5) { animation-delay: 0.25s; }
+.dropdown:hover .dropdown-content li:nth-child(6),
+.dropdown:not(:hover) .dropdown-content li:nth-child(6) { animation-delay: 0.3s; }
+.dropdown:hover .dropdown-content li:nth-child(7),
+.dropdown:not(:hover) .dropdown-content li:nth-child(7) { animation-delay: 0.35s; }
+.dropdown:hover .dropdown-content li:nth-child(8),
+.dropdown:not(:hover) .dropdown-content li:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dropOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+nav ul.dropdown-content a {
+  padding: 0.5rem 1rem;
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  color: #ffd700;
+  transition: color 1s ease;
+}
+
+nav ul.dropdown-content a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffd700, #ff8800);
+  z-index: -1;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: none;
+}
+
+nav ul.dropdown-content a:hover::after {
+  animation: slideIn 0.6s forwards;
+}
+
+nav ul.dropdown-content a:not(:hover)::after {
+  animation: slideOut 0.6s forwards;
+}
+
+nav ul.dropdown-content a:hover {
+  color: #1c2340;
+}
+
+/* Quiz button styling */
+#quiz-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* More spacing between buttons */
+  margin-top: 2rem; /* Space from quiz question */
+}
+
+#quiz-buttons button {
+  background: linear-gradient(135deg, #ffd700, #ff8800); /* Stronger gradient */
+  color: #0b0f1a;
+  border: none;
+  padding: 1rem 2rem; /* Taller and wider for less blocky look */
+  border-radius: 20px; /* Rounded edges */
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #ffd700, 0 0 20px #ff8800; /* Stronger glow */
+  position: relative;
+}
+
+#quiz-buttons button:hover {
+  background: linear-gradient(135deg, #ffd700, #ff8800); /* Hover gradient pop */
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px #ffd700, 0 0 35px #ff8800;
+}
+
+#quiz-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 12px #ffd700, 0 0 25px #ff8800;
+}

@@ -1,0 +1,306 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: #0b0f1a;
+  color: white;
+}
+
+header {
+  background-color: #11182b;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  color: #ffd700;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+nav ul { list-style: none; margin: 0; padding: 0; }
+nav li { position: relative; display: inline-block; }
+nav a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+nav a:hover { color: #ff8800; text-decoration: none; }
+
+/* dropdown */
+nav ul.dropdown-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background: #1c2340;
+  min-width: 160px;
+  border-radius: 6px;
+  z-index: 10;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.dropdown:hover > .dropdown-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+nav ul.dropdown-content li {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* animations */
+@keyframes dropIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes dropOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-10px); } }
+
+nav ul.dropdown-content a {
+  padding: 0.5rem 1rem;
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  color: #ffd700;
+  transition: color 1s ease;
+}
+nav ul.dropdown-content a:hover { color: #1c2340; }
+
+/* hover-gradient effect */
+nav ul.dropdown-content a::after,
+.planet h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffd700, #ff8800);
+  z-index: -1;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: none;
+}
+nav ul.dropdown-content a:hover::after { animation: slideIn 0.6s forwards; }
+@keyframes slideIn { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.planet {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: center;
+}
+
+.planet img {
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.4);
+}
+
+.planet-info {
+  flex: 1;
+}
+
+.planet-info h2 {
+  color: #ffd700;
+  margin-top: 1rem;
+}
+
+.planet-info ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  color: #ff8800;
+}
+
+@media (max-width: 768px) {
+  .planet {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .planet img {
+    margin-bottom: 1rem;
+  }
+}
+
+.planet ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.viewer-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: #000;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.viewer-container model-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Slide in/out keyframes */
+@keyframes slideIn {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: scaleX(1); }
+  to { opacity: 0; transform: scaleX(0); }
+}
+/* Dropdown menu styling */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  position: relative;
+  display: inline-block;
+}
+
+nav a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+  color: #ff8800;
+  text-decoration: none;
+}
+
+nav ul.dropdown-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background: #1c2340;
+  min-width: 160px;
+  border-radius: 6px;
+  z-index: 10;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+nav ul.dropdown-content li {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown:hover .dropdown-content li {
+  animation: dropIn 0.4s forwards;
+}
+
+.dropdown:not(:hover) .dropdown-content li {
+  animation: dropOut 0.4s forwards;
+}
+
+/* Staggered animation effect */
+.dropdown:hover .dropdown-content li:nth-child(1),
+.dropdown:not(:hover) .dropdown-content li:nth-child(1) { animation-delay: 0.05s; }
+.dropdown:hover .dropdown-content li:nth-child(2),
+.dropdown:not(:hover) .dropdown-content li:nth-child(2) { animation-delay: 0.1s; }
+.dropdown:hover .dropdown-content li:nth-child(3),
+.dropdown:not(:hover) .dropdown-content li:nth-child(3) { animation-delay: 0.15s; }
+.dropdown:hover .dropdown-content li:nth-child(4),
+.dropdown:not(:hover) .dropdown-content li:nth-child(4) { animation-delay: 0.2s; }
+.dropdown:hover .dropdown-content li:nth-child(5),
+.dropdown:not(:hover) .dropdown-content li:nth-child(5) { animation-delay: 0.25s; }
+.dropdown:hover .dropdown-content li:nth-child(6),
+.dropdown:not(:hover) .dropdown-content li:nth-child(6) { animation-delay: 0.3s; }
+.dropdown:hover .dropdown-content li:nth-child(7),
+.dropdown:not(:hover) .dropdown-content li:nth-child(7) { animation-delay: 0.35s; }
+.dropdown:hover .dropdown-content li:nth-child(8),
+.dropdown:not(:hover) .dropdown-content li:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dropOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+nav ul.dropdown-content a {
+  padding: 0.5rem 1rem;
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  color: #ffd700;
+  transition: color 1s ease;
+}
+
+nav ul.dropdown-content a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffd700, #ff8800);
+  z-index: -1;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: none;
+}
+
+nav ul.dropdown-content a:hover::after {
+  animation: slideIn 0.6s forwards;
+}
+
+nav ul.dropdown-content a:not(:hover)::after {
+  animation: slideOut 0.6s forwards;
+}
+
+nav ul.dropdown-content a:hover {
+  color: #1c2340;
+}
