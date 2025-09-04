@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars</title>
+  <link rel="stylesheet" href="/stylesheet/planet.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Mars</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="/home.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Planets</a>
+          <ul class="dropdown-content">
+            <li><a href="/planet_html/mercury.html">Mercury</a></li>
+            <li><a href="/planet_html/venus.html">Venus</a></li>
+            <li><a href="/planet_html/earth.html">Earth</a></li>
+            <li><a href="/planet_html/mars.html">Mars</a></li>
+            <li><a href="/planet_html/jupiter.html">Jupiter</a></li>
+            <li><a href="/planet_html/saturn.html">Saturn</a></li>
+            <li><a href="/planet_html/uranus.html">Uranus</a></li>
+            <li><a href="/planet_html/neptune.html">Neptune</a></li>
+          </ul>
+        </li>
+        <li><a href="/home.html#quiz">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="planet">
+      <model-viewer
+        src="/models/mars.glb"
+        camera-controls
+        disable-pan
+        disable-zoom
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        shadow-intensity="0"
+        style="width: 100%; height: 400px; background: #000; border-radius: 12px; margin-bottom: 1.5rem;">
+      </model-viewer>
+      <div class="planet-info">
+        <h2>Overview</h2>
+        <p>Mars is the fourth planet from the Sun, known as the Red Planet because of its reddish soil.</p>
+
+        <h2>Facts</h2>
+        <ul>
+          <li>Diameter: 6,779 km</li>
+          <li>Moons: 2 (Phobos and Deimos)</li>
+          <li>Orbital period: 687 Earth days</li>
+          <li>Atmosphere: Carbon dioxide, nitrogen, argon</li>
+        </ul>
+
+        <h2>Interesting Feature</h2>
+        <p>Mars has the tallest volcano in the Solar System, Olympus Mons, standing at 21 km high.</p>
+      </div>
+    </section>
+
+    <a href="/home.html" class="back-link">← Back to Planets</a>
+  </main>
+</body>
+</html>
